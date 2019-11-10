@@ -35,6 +35,13 @@ export default new Router({
       component(resolve) {
         require(['../views/about/index.vue'], resolve);
       }
+    },
+     {
+      // 专栏
+      path: '/book',
+      component(resolve) {
+        require(['../views/book/index.vue'], resolve);
+      }
     }
   ]
 })

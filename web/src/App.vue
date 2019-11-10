@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-loading :text="loadingText" v-if="isLoading"/>
+    <v-login/>
     <v-headers/>
     <router-view class="router-views"/>
     <main-footer/>
@@ -9,6 +10,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
+  import Vlogin from './components/Login'
   import VLoading from './components/Loading'
   import VHeaders from './components/Headers'
   import MainFooter from './components/MainFooter'
@@ -17,6 +19,7 @@
     components: {
       VLoading,
       VHeaders,
+      Vlogin,
       MainFooter
     },
     data() {

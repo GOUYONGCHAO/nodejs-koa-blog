@@ -2,15 +2,18 @@
   "name": "vue-project",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "liangfengbo <itbo@163.com>",
+  "author": "gouyongchao@gmail.com",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --disableHostCheck=true --inline --progress --config build/webpack.dev.conf.js",
+    "runprod": "",
     "start": "npm run dev",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.4",
     "element-ui": "^2.8.2",
     "lib-flexible": "^0.3.2",
     "mavon-editor": "^2.7.5",

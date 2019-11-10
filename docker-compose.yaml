@@ -1,0 +1,75 @@
+# docker部署
+version: "3"
+services:
+  nginx:
+    container_name: 'nginx'
+    image: nginx:1.16.1
+    restart: always
+    ports:
+      - '80:80'
+      - "443:443"
+    volumes:
+      - ./etc/nginx/:/etc/nginx/
+      - ./usr/share/nginx/html:/usr/share/nginx/html
+      - ./var/www/html:/var/www/html
+    networks:
+      - app_net
+    depends_on:
+      - ghost
+      - mysql
+  mysql:
+    container_name: 'mysql'
+    image: mysql:8.0
+    restart: unless-stopped
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=pwd@mysql
+      - MYSQL_USER=ghost
+      - MYSQL_PASSWORD=pwd@mysql
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./var/lib/mysql:/var/lib/mysql 
+      - ./etc/mysql/conf.d:/etc/mysql/conf.d
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - app_net
+  dbadminer:
+    image: adminer
+    restart: always
+    networks:
+      - app_net
+    links:
+      - mysql
+    ports:
+      - "8000:8000"
+  server:
+    container_name: 'server'
+    restart: unless-stopped
+    image: ghost:latest
+    networks:
+      - app_net
+    links:
+      - mysql
+    environment:
+      - NODE_ENV:production
+      - database__client:mysql
+      - database__connection__host:mysql
+      - database__connection__user:ghost
+      - database__connection__password:pwd@mysql
+      - database__connection__database:ghost
+    ports:
+      - "2368:2368"
+    volumes:
+      - ./var/lib/ghost/content:/var/lib/ghost/content
+  web:
+    container_name: "web"
+    restart: always
+    image:
+    networks:
+      - app_net
+    ports:
+      - "80:8082"
+networks:
+  app_net:
+    driver: bridge

@@ -54,12 +54,13 @@
     <div class="sidebar">
       <v-category/>
       <v-links/>
+      <v-ads/>
     </div>
   </section>
 </template>
 <script>
   import VCategory from '../../components/Category'
-
+  import VAds from '../../components/Ads' 
   import VLinks from '../../components/Links'
   import {mapState, mapActions} from 'vuex'
   import merge from 'webpack-merge'
@@ -67,7 +68,8 @@
   export default {
     components: {
       VCategory,
-      VLinks
+      VLinks,
+      VAds
     },
     data() {
       return {
@@ -89,7 +91,7 @@
     created() {
       // 获取文章
       this.getArticle();
-      document.title = `波博客 - boblog.com`
+      document.title = `作业参考 homeworkdone.net`
     },
     methods: {
       ...mapActions({
@@ -103,7 +105,6 @@
        */
       async getArticle() {
         const {page, desc, category_id, keyword} = this.$route.query;
-
         await this.getArticleList({
           page,
           desc,
@@ -161,6 +162,7 @@
     flex: 9;
     border-radius: 8px;
     background: #fff;
+    min-height: 70vh;
 
     & .article-nav {
       padding: 16px 0;

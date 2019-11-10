@@ -12,8 +12,7 @@
     components: {},
 
     data() {
-
-      return {}
+         return {}
     },
 
     computed: {
