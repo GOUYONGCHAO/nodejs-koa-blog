@@ -10,7 +10,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import Vlogin from './components/Login'
+  // import Vlogin from './components/Login'
   import VLoading from './components/Loading'
   import VHeaders from './components/Headers'
   import MainFooter from './components/MainFooter'
@@ -19,7 +19,7 @@
     components: {
       VLoading,
       VHeaders,
-      Vlogin,
+      // Vlogin,
       MainFooter
     },
     data() {

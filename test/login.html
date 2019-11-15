@@ -1,0 +1,642 @@
+<html lang="zh-CN">
+<head>
+<!--link href="global.css" type="text/css" rel="stylesheet" /-->
+</head>
+<body class="user-login ">
+<style>
+.user-login, .user-register, .user-forgot, .user-phoneLogin, .user-reset {
+    background-color:#f3f3f3
+}
+
+.user-login .header, .user-register .header, .user-forgot .header, .user-phoneLogin .header, .user-reset .header {
+    margin:50px 0 30px
+}
+
+.user-login .header h1, .user-register .header h1, .user-forgot .header h1, .user-phoneLogin .header h1, .user-reset .header h1 {
+    margin-bottom:5px
+}
+
+.user-login .header .description, .user-register .header .description, .user-forgot .header .description, .user-phoneLogin .header .description, .user-reset .header .description {
+    font-size: 16px;
+    color:#999
+}
+
+.user-login .logo img, .user-register .logo img, .user-forgot .logo img, .user-phoneLogin .logo img, .user-reset .logo img {
+    height:72px
+}
+
+.user-login .login-link, .user-register .login-link, .user-forgot .login-link, .user-phoneLogin .login-link, .user-reset .login-link {
+    margin: 20px 0;
+    color:#ddd
+}
+
+.user-login .login-link a, .user-register .login-link a, .user-forgot .login-link a, .user-phoneLogin .login-link a, .user-reset .login-link a {
+    margin: 0 10px;
+    color:#999
+}
+
+.user-login .btn-sn-more, .user-register .btn-sn-more, .user-forgot .btn-sn-more, .user-phoneLogin .btn-sn-more, .user-reset .btn-sn-more {
+    height: 30px;
+    width: 30px
+}
+
+.user-login .widget-login [class * ="btn-sn-"], .user-register .widget-login [class * ="btn-sn-"], .user-forgot .widget-login [class * ="btn-sn-"], .user-phoneLogin .widget-login [class * ="btn-sn-"], .user-reset .widget-login [class * ="btn-sn-"] {
+    margin:0 2px 6px 0
+}
+
+.user-login .login, .user-register .login, .user-forgot .login, .user-phoneLogin .login, .user-reset .login {
+    position:relative
+}
+
+.user-login .login-vline, .user-register .login-vline, .user-forgot .login-vline, .user-phoneLogin .login-vline, .user-reset .login-vline {
+    position: absolute;
+    height: 80%;
+    border-left: 1px solid #EEE;
+    left: 50%;
+    top:45px
+}
+
+.user-login .login.narrow, .user-register .login.narrow, .user-forgot .login.narrow, .user-phoneLogin .login.narrow, .user-reset .login.narrow {
+    background:transparent
+}
+
+@media (max-width: 767px) {
+    .user-login .header, .user-register .header, .user-forgot .header, .user-phoneLogin .header, .user-reset .header {
+        margin:0
+    }
+
+    .user-login .header h1, .user-register .header h1, .user-forgot .header h1, .user-phoneLogin .header h1, .user-reset .header h1 {
+        margin: 10px 0 15px 0;
+        font-size:32px
+    }
+
+    .user-login .logo img, .user-register .logo img, .user-forgot .logo img, .user-phoneLogin .logo img, .user-reset .logo img {
+        height:32px
+    }
+
+    .user-login .description, .user-register .description, .user-forgot .description, .user-phoneLogin .description, .user-reset .description {
+        display: none
+    }
+
+    .user-login button[type="submit"], .user-register button[type="submit"], .user-forgot button[type="submit"], .user-phoneLogin button[type="submit"], .user-reset button[type="submit"] {
+        width:100%
+    }
+
+    .user-login #showMore, .user-register #showMore, .user-forgot #showMore, .user-phoneLogin #showMore, .user-reset #showMore {
+        display:none
+    }
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color:transparent
+}
+
+body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
+    font-size: 14px;
+    line-height: 1.42858;
+    color: #333;
+    background-color: #fff;
+    -webkit-font-smoothing:antialiased
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height:inherit
+}
+
+img {
+    border:0;
+    vertical-align:middle;
+}
+
+
+h1 small, h1 .small, h2 small, h2 .small, h3 small, h3 .small, h4 small, h4 .small, h5 small, h5 .small, h6 small, h6 .small, .h1 small, .h1 .small, .h2 small, .h2 .small, .h3 small, .h3 .small, .h4 small, .h4 .small, .h5 small, .h5 .small, .h6 small, .h6 .small {
+    font-weight: normal;
+    line-height: 1;
+    color:#777
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom:10px
+}
+
+h1 small, h1 .small, .h1 small, .h1 .small, h2 small, h2 .small, .h2 small, .h2 .small, h3 small, h3 .small, .h3 small, .h3 .small {
+    font-size:65%
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 10px;
+    margin-bottom:10px
+}
+
+h4 small, h4 .small, .h4 small, .h4 .small, h5 small, h5 .small, .h5 small, .h5 .small, h6 small, h6 .small, .h6 small, .h6 .small {
+    font-size:75%
+}
+
+h1, .h1 {
+    font-size:36px
+}
+
+h2, .h2 {
+    font-size:30px
+}
+
+h3, .h3 {
+    font-size:24px
+}
+
+h4, .h4 {
+    font-size:18px
+}
+
+h5, .h5 {
+    font-size:14px
+}
+
+h6, .h6 {
+    font-size:12px
+}
+
+p {
+    margin:0 0 10px
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right:15px
+}
+
+.container:before, .container:after {
+    content: " ";
+    display:table
+}
+
+.container:after {
+    clear:both
+}
+
+@media (min-width: 768px) {
+    .container {
+        width:750px
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width:970px
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width:1140px
+    }
+}
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right:15px
+}
+
+.container-fluid:before, .container-fluid:after {
+    content: " ";
+    display:table
+}
+
+.container-fluid:after {
+    clear:both
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display:block
+}
+
+
+.row {
+    margin-left: -15px;
+    margin-right:-15px
+}
+
+.row:before, .row:after {
+    content: " ";
+    display:table
+}
+
+.row:after {
+    clear:both
+}
+.pl20, .pl-20 {
+    padding-left:20px !important
+}
+.pr20, .pr-20 {
+    padding-right:20px !important
+}
+.col-md-12 {
+    position: relative;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right:15px
+        width:100%
+    }
+.panel {
+  width: 600px;
+}
+@media (max-width: 600px) {
+  .panel {
+    width: 100%;
+  }
+}
+.icon-sn-google {
+    background-position:0px -28px
+}
+.widget-login a {
+    text-decoration:none
+}
+.mb15, .mb-15 {
+    margin-bottom:15px !important
+}
+.text-center {
+    text-align:center
+}
+.text-muted {
+    color:#777
+}
+.btn-block {
+    display: block;
+    width:100%
+}
+
+.btn-block + .btn-block {
+    margin-top: 5px
+}
+
+input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="button"].btn-block {
+    width:100%
+}
+.clearfix:before, .fmt:before, .clearfix:after, .fmt:after {
+    content: " ";
+    display:table
+}
+
+.clearfix:after, .fmt:after {
+    clear:both
+}
+.login-modal .login-wrap .more-login-area .more-login-words {
+    position: absolute;
+    left: calc(50% - 52px);
+    top: -10px;
+    padding: 0 10px;
+    background:#fff
+}
+.form-group {
+    margin-bottom:15px
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow:0 1px 1px rgba(0, 0, 0, 0.05)
+}
+
+.panel-body {
+    padding:15px
+}
+
+.panel-body:before, .panel-body:after {
+    content: " ";
+    display:table
+}
+
+.panel-body:after {
+    clear:both
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right:auto
+}
+.sfModal-content .row {
+    margin:0
+}
+.login-modal {
+    position:relative
+}
+
+.login-modal .login-vline {
+    position: absolute;
+    height: 90%;
+    border-left: 1px solid #eee;
+    left: 50%;
+    top:35px
+}
+
+.login-modal .login-wrap {
+    padding:0 125px
+}
+
+@media (max-width: 600px) {
+    .login-modal .login-wrap {
+        padding:0
+    }
+}
+
+.login-modal .login-wrap .more-login-area {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    position:relative
+}
+
+.login-modal .login-wrap .more-login-area .more-login-words {
+    position: absolute;
+    left: calc(50% - 52px);
+    top: -10px;
+    padding: 0 10px;
+    background:#fff
+}
+
+.login-modal .widget-login .btn {
+    margin-bottom: 5px;
+    padding:0
+}
+
+
+@media (min-width: 768px) {
+    .form-inline .form-group {
+        display: inline-block;
+        margin-bottom: 0;
+        vertical-align:middle
+    }
+
+    .form-inline .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align:middle
+    }
+
+    .form-inline .input-group {
+        display: inline-table;
+        vertical-align:middle
+    }
+
+    .form-inline .input-group .input-group-addon, .form-inline .input-group .input-group-btn, .form-inline .input-group .form-control {
+        width:auto
+    }
+
+    .form-inline .input-group > .form-control {
+        width:100%
+    }
+
+    .form-inline .control-label {
+        margin-bottom: 0;
+        vertical-align:middle
+    }
+
+    .form-inline .radio, .form-inline .checkbox {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 0;
+        vertical-align:middle
+    }
+
+    .form-inline .radio label, .form-inline .checkbox label {
+        padding-left: 0
+    }
+
+    .form-inline .radio input[type="radio"], .form-inline .checkbox input[type="checkbox"] {
+        position: relative;
+        margin-left:0
+    }
+
+    .form-inline .has-feedback .form-control-feedback {
+        top:0
+    }
+}
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color:inherit
+}
+
+.panel-title > a {
+    color:inherit
+}
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color:#ddd
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color:#ddd
+}
+
+.panel-default > .panel-heading .badge {
+    color: #f5f5f5;
+    background-color:#333
+}
+.hidden {
+    display: none !important;
+    visibility:hidden !important
+}
+.pull-right {
+    float:right !important
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    margin:0
+}
+
+button {
+    overflow:visible
+}
+
+button, select {
+    text-transform: none
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor:pointer
+}
+
+button[disabled], html input[disabled] {
+    cursor:default
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding:0
+}
+
+input {
+    line-height: normal
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+    height: auto
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance:none
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42858;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select:none
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset:-2px
+}
+
+.btn:hover, .btn:focus {
+    color: #333;
+    text-decoration:none
+}
+
+.btn:active, .btn.active {
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    box-shadow:inset 0 3px 5px rgba(0, 0, 0, 0.125)
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow:none
+}
+
+.btn-block {
+    display: block;
+    width:100%
+}
+.btn-primary {
+    color: #fff;
+    background-color: #009a61;
+    border-color:#008151
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #006741;
+    border-color:#00432a
+}
+
+.btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
+    background-image:none
+}
+
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary:hover, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary.active {
+    background-color: #009a61;
+    border-color:#008151
+}
+
+.btn-primary .badge {
+    color: #009a61;
+    background-color:#fff
+}
+.bg-white {
+    background-color:#fff
+}
+
+</style>
+<div class="container">
+    <div class="header text-center">
+    <h1><a href="/" class="logo">
+    <img src="../web/src/assets/images/LOGO.png" alt="homeworkdone">
+        </a>
+    </h1>
+        <p class="description text-muted">欢迎来到作业参考</p>
+    </div>
+        <div class="panel panel-default center-block">
+        <div class="panel-heading">
+            <h3 class="panel-title">登录</h3>
+        </div>
+        <div class="panel-body sfModal-content">
+    <div class="row bg-white login-modal">
+        <div class="col-md-12 login-wrap">
+            <form action="/api/user/login" method="POST" role="form" class="mt15">
+            <div class="form-group hidden">
+            <input type="text" class="form-control" name="remember" value="1" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label for="username" class="control-label">手机号 或 Email</label>
+                <input type="text" class="form-control" name="username" tabindex="1" required="" placeholder="11 位手机号 或 Email" autocomplete="off">
+            </div>
+            <div class="form-group">
+                    <label class="control-label">密码</label>
+                    <span class="pull-right">
+                    <a href="/user/forgot" tabindex="4">忘记密码</a>
+                    </span>
+                    <input type="password" class="form-control" name="password" tabindex="2" required="" placeholder="请输入密码">
+                </div>
+                <div class="form-group clearfix">
+                    <button type="submit" class="btn-block btn btn-primary pull-right pl20 pr20" tabindex="3">登录
+                    </button>
+                </div>
+            </form>
+            <div class="text-muted text-center more-login-area">
+    <span class="more-login-words">更多登录方式</span>
+</div>
+<div class="widget-login mb15 text-center">
+    <a href="/user/oauth/google" class="" onclick=""><span class="icon-sn-google"></span></a>
+    <a href="/user/oauth/github" class="" <span class="icon-sn-github"></span></a>
+    <a href="/user/oauth/weibo" class="" onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;3rd login button&quot;, &quot;clicked&quot;, &quot;login modal&quot;, {media: &quot;weibo&quot;});"><span class="icon-sn-weibo"></span></a>
+    <a href="/user/oauth/qq" class="" onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;3rd login button&quot;, &quot;clicked&quot;, &quot;login modal&quot;, {media: &quot;qq&quot;});"><span class="icon-sn-qq"></span></a>
+    <a href="/user/oauth/weixin" class="" onclick="ga(&quot;send&quot;, &quot;event&quot;, &quot;3rd login button&quot;, &quot;clicked&quot;, &quot;login modal&quot;, {media: &quot;qq&quot;});"><span class="icon-sn-weixin"></span></a>
+    <a href="/user/oauth/linkedin" class=""<span class="icon-sn-linkedin"></span></a>
+    </div>
+<div class="form-group clearfix">
+    <a class="btn-block btn btn-default pull-right pl20 pr20">
+    注册新账号
+    </a>
+</div>
+<p class="text-muted text-center mb15">继续即表示你同意<a href="/tos" target="_blank">《服务条款》</a>和<a href="/privacy" target="_blank">《隐私政策》</a></p>       
+</div>
+</body>
+</html>

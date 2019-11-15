@@ -6,7 +6,6 @@
           <img src="../assets/images/LOGO.png" alt="LOGO" />
         </a>
       </section>
-
       <ul class="nav-dropdown">
         <li class="nav-item">
           <el-dropdown trigger="click">
@@ -54,13 +53,17 @@
         ></el-input>
       </div>
       <div class="login">
-      <el-row>
+       <el-row>
        <el-button  
        plain 
        type="primary" 
-       @click="showModal"
+       @click="showLogin"
        >注册</el-button>
-       <el-button type="primary" @click="Login" >登录</el-button>
+       <el-button type="primary" @click="showLogin">登录</el-button>
+       <login v-show="isShowLogin"
+        width="200"
+        @on-cancel="closeLogin"
+        ></login>
       </el-row>
       <span class="btn log-in" v-if="isLogin && userInfo.login">你好，{{userInfo.userame}}</span>
       </div>
@@ -71,12 +74,13 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import merge from "webpack-merge";
+import login from './Login'
 export default {
   data() {
     return {
       keyword: "",
       navIndex: 0,
-      showModal: true,
+      isShowLogin: false,
       nav: [
         { name: "文章", path: "/", icon: "el-icon-house" },
         { name: "专栏", path: "/book", icon: "el-icon-reading" },
@@ -84,6 +88,10 @@ export default {
       ]
     };
   },
+  components:{
+    'login':login, // 登录组件
+  },
+
   mounted() {},
   computed: {
     ...mapState({}),
@@ -158,6 +166,13 @@ export default {
      */
     toPath(path) {
       this.$router.push(path);
+    },
+    //
+    showLogin(){
+      this.isShowLogin=!this.isShowLogin;//弹出与收起
+    },
+    closeLogin() {
+      this.isShowLogin = false;////响应on-closeLogin()事件，来把弹出框关闭
     }
   }
 };
@@ -167,7 +182,7 @@ export default {
 .header {
   width: 100%;
   height: 96px;
-  z-index: 5000;
+  z-index: 1;
   background: #fff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid #f0f0f0;
